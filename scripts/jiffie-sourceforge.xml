@@ -1,0 +1,42 @@
+<testcase xmlns="jelly:jameleon">
+
+  <test-case-summary>Tests searching on the sourceforege site</test-case-summary>
+  <test-case-author>Christian Hargraves</test-case-author>
+  <test-case-level>ACCEPTANCE</test-case-level>
+  <functional-point-tested>Jiffie Example</functional-point-tested>
+
+  <ie-session baseUrl="http://sourceforge.net" beginSession="true">
+    <ie-validate
+        functionId="Verify that we are on the sourceforge home page"
+        title="SourceForge.net: Welcome to SourceForge.net"
+        textPresent="Open Source Technology Group"/>
+    <ie-set-text-field
+        functionId="Enter jameleon into the search box."
+        name="words"
+        value="jameleon"
+        form="searchform"/>
+    <ie-click-button
+        functionId="Click on the 'Google Search' button."
+        form="searchform"
+        value="Search"
+        eventToFire="onclick"
+        functionDelay="300"/>
+    <ie-validate
+        functionId="Check that we actually did a search for 'Jameleon' and that we found 'Jameleon'"
+        title="SourceForge.net: Software Search"
+        linkPresent="Jameleon"/>
+    <ie-click-link
+        functionId="Click on the 'Jameleon' link"
+        link="Jameleon"/>
+    <ie-validate
+        functionId="Validate that we arrived at the Jameleon SourceForge Page."
+        title="SourceForge.net: Jameleon"
+        linkPresent="engrean"/>
+    <ie-click-link
+        functionId="Navigate to the Jameleon site by clicking on the 'Project Web Site' link"
+        link="Project Web Site"/>
+    <ie-validate
+        functionId="Validate that we arrived at the Jameleon SourceForge Page."
+        title="Jameleon - An Automated Testing Tool - Overview"/>
+  </ie-session>
+</testcase>

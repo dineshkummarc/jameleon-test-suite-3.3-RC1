@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+<project name="jameleon-test-suite" default="main" basedir=".">
+
+  <property file="build.properties" />
+
+  <path id="base.classpath">
+    <fileset dir="${lib.dir}">
+      <include name="*.jar"/>
+    </fileset>
+  </path>
+
+  <taskdef resource="ant/JameleonAntTasks.properties" format="properties" classpathref="base.classpath"/>
+
+  <target name="main" description="Make required modifications to existing jameleon-test-suite structure">
+    <jmln-upgrade/>
+  </target>
+
+</project>

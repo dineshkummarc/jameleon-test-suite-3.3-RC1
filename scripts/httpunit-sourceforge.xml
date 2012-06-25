@@ -1,0 +1,37 @@
+<testcase xmlns="jelly:jameleon">
+  <test-case-summary>Tests searching on the sourceforege site</test-case-summary>
+  <test-case-author>Christian Hargraves</test-case-author>
+  <test-case-level>ACCEPTANCE</test-case-level>
+  <functional-point-tested>HttpUnit Example</functional-point-tested>
+  <httpunit-session baseUrl="http://sourceforge.net" enableScripting="false" beginSession="true">
+
+    <hu-page-validation
+        functionId="Verify that we are on the sourceforge home page"
+        title="SourceForge.net: Welcome to SourceForge.net"
+        textPresent="Projects"/>
+    <http-unit-submit-form functionId="Form submit" formName="searchform">
+      <param>
+        <param-name>words</param-name>
+        <param-value>jameleon</param-value>
+      </param>
+    </http-unit-submit-form>
+    <hu-page-validation
+        functionId="Check that we actually did a search for 'Jameleon' and that we found 'Jameleon'"
+        title="SourceForge.net: Software Search"
+        linksPresent="Jameleon"/>
+    <hu-click-link
+        functionId="Click on the 'Jameleon' link"
+        link="Jameleon"/>
+    <hu-page-validation
+        functionId="Validate that we arrived at the Jameleon SourceForge Page."
+        title="SourceForge.net: Jameleon"
+        linksPresent="engrean"/>
+    <hu-click-link
+        functionId="Navigate to the Jameleon site by clicking on the 'Home Page' link"
+        link="Project Web Site"/>
+    <hu-page-validation
+        functionId="Verify that we arrived at the Jameleon Site."
+        title="Jameleon - An Automated Testing Tool - Overview"/>
+
+  </httpunit-session>
+</testcase>

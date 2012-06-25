@@ -1,0 +1,40 @@
+<testcase xmlns="jelly:jameleon" trace="true">
+
+  <test-case-summary>Tests searching on the sourceforege site</test-case-summary>
+  <test-case-author>Christian Hargraves</test-case-author>
+  <test-case-level>ACCEPTANCE</test-case-level>
+  <functional-point-tested>Selenium Example</functional-point-tested>
+
+  <selenium-session baseUrl="http://sourceforge.net" beginSession="true"  startSeleniumProxy="true">
+    <selenium-assert-title-equals
+        functionId="Verify that we are on the sourceforge home page"
+        title="SourceForge.net: Welcome to SourceForge.net"/>
+    <selenium-type
+        functionId="Enter jameleon into the search box."
+        locator="words"
+        keys="jameleon"/>
+    <selenium-click 
+        functionId="Click on the 'Search' button."
+        locator="id=searchsubmit"
+        waitForPageToLoad="35000"/>
+    <selenium-assert-title-equals
+        functionId="Check that we actually did a search for 'Jameleon' and that we found 'Jameleon'"
+        title="SourceForge.net: Software Search"/>
+    <selenium-assert-element-present 
+        functionId="Check for the 'Jameleon' link."
+        locator="xpath=//a[text()='Jameleon']"/>
+    <selenium-click 
+        functionId="Click on the 'Jameleon' link"
+        locator="link=Jameleon"
+        waitForPageToLoad="35000"/>
+    <selenium-assert-title-equals
+        functionId="Validate that we arrived at the Jameleon SourceForge Page."
+        title="SourceForge.net: Jameleon"/>
+    <selenium-assert-element-present 
+        functionId="Check for the 'engrean' link."
+        locator="link=engrean"/>
+    <selenium-click 
+        functionId="Click on the 'Project Web Site' link"
+        locator="link=Project Web Site"/>
+  </selenium-session>
+</testcase>

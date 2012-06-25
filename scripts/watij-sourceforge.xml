@@ -1,0 +1,39 @@
+<testcase xmlns="jelly:jameleon" trace="true">
+
+  <test-case-summary>Tests searching on the sourceforege site</test-case-summary>
+  <test-case-author>Christian Hargraves</test-case-author>
+  <test-case-level>ACCEPTANCE</test-case-level>
+  <functional-point-tested>Watij Example</functional-point-tested>
+
+  <watij-session baseUrl="http://sourceforge.net" beginSession="true">
+    <watij-assert-title
+        functionId="Verify that we are on the sourceforge home page"
+        title="SourceForge.net: Welcome to SourceForge.net"/>
+    <watij-set-text-field functionId="Enter jameleon into the search box."
+        how="name"
+        what="words"
+        value="jameleon"/>
+    <watij-click
+        functionId="Click on the 'Search' button."
+        how="id"
+        what="searchsubmit"/>
+    <watij-assert-title
+        functionId="Check that we actually did a search for 'Jameleon' and that we found 'Jameleon'"
+        title="SourceForge.net: Software Search"/>
+    <watij-click-link
+        functionId="Click on the 'Jameleon' link"
+        how="text"
+        what="Jameleon"/>
+    <watij-assert-title
+        functionId="Validate that we arrived at the Jameleon SourceForge Page."
+        title="SourceForge.net: Jameleon"/>
+    <watij-assert-html-element
+        functionId="Check for the 'engrean' link."
+        how="text"
+        what="engrean"/>
+    <watij-click-link
+        functionId="Click on the 'Project Web Site' link"
+        how="text"
+        what="Web Site"/>
+  </watij-session>
+</testcase>

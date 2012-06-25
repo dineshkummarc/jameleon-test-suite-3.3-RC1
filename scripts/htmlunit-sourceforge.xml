@@ -1,0 +1,27 @@
+<testcase xmlns="jelly:jameleon" trace="true">
+
+  <test-case-summary>Tests searching on the sourceforege site</test-case-summary>
+  <test-case-author>Christian Hargraves</test-case-author>
+  <test-case-level>ACCEPTANCE</test-case-level>
+  <functional-point-tested>Jiffie Example</functional-point-tested>
+
+  <htmlunit-session baseUrl="http://sourceforge.net" beginSession="true">
+    <htmlunit-validate
+        functionId="Verify that we are on the sourceforge home page"
+        title="SourceForge.net: Welcome to SourceForge.net"
+        textPresent="Open Source Technology Group"/>
+    <htmlunit-set-text-field
+        functionId="Enter jameleon into the search box."
+        fieldName="words"
+        value="jameleon"
+        form="searchform"/>
+    <htmlunit-click
+        functionId="Click on the 'Search' button."
+        xpath="//form[@name='searchform']//input[@type='submit' and @value='Search']"/>
+    <htmlunit-validate
+        functionId="Check that we actually did a search for 'Jameleon' and that we found 'Jameleon'"
+        title="SourceForge.net: Software Search"
+        xpath="//a[text()='Jameleon']"/>
+
+  </htmlunit-session>
+</testcase>
